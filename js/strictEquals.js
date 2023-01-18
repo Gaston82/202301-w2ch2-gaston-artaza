@@ -1,11 +1,12 @@
 const strictEquals = (valueA, valueB) => {
+  const values = [valueA, valueB];
+
   if (Number.isNaN(valueA) || Number.isNaN(valueB)) {
     return false;
-  } else if (valueA <= 0 || valueB <= 0) {
+  } else if (values.includes(0) || values.includes(-0)) {
     return true;
-  } else {
-    return Object.is(valueA, valueB);
   }
+  return Object.is(valueA, valueB);
 };
 
 export default strictEquals;
